@@ -4,7 +4,11 @@ let count = 0;
 (async () => {
   while (true) {
     console.log('opening...', ++count);
-    await fetch(url);
-    console.log('opened.');
+    const res = await fetch(url);
+    if (res.status !== 200) {
+      console.log('error!.', res.status);
+    } else {
+      console.log('opened.', res.status);
+    }
   }
 })();
